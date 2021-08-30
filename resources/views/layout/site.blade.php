@@ -46,11 +46,13 @@
 
             <!-- Этот блок расположен справа -->
             <ul class="navbar-nav ml-auto">
-                @if (Auth::user()->id == 1 || Auth::user()->id == 2)
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.index') }}">Админка</a>
-                    </li>
-                @endif
+                @auth
+                    @if (Auth::user()->id == 1 || Auth::user()->id == 2)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.index') }}">Админка</a>
+                        </li>
+                    @endif
+                @endauth
                 <li class="nav-item" id="top-basket">
                     <a class="nav-link @if ($positions) text-success @endif"
                        href="{{ route('basket.index') }}">
