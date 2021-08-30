@@ -1,13 +1,17 @@
 @extends('layout.site')
 
 @section('content')
-    <h1>Интернет-магазин</h1>
+    <h1>Интернет-магазин по продаже одежды</h1>
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem distinctio
-        dolorum ducimus earum eligendi est eum eveniet excepturi exercitationem explicabo facilis
-        fuga hic illum ipsam libero modi, nobis odio, officia officiis optio quae quibusdam
-        reiciendis repellendus sed sunt tenetur, voluptatum. Ab adipisci aperiam esse iure neque
-        quis repellendus temporibus.
+        Наш интернет-магазин находится в городе Чернигове, поэтому доставка по Чернигову бесплатная.
+        В остальные города, доставка любой почтой.
+    </p>
+    <p>
+        При оформлении заказа, пожалуйста, пользуйтесь корзиной(регистрация очень быстрая)
+        и мы вам обязательно перезвоним.
+    </p>
+    <p>
+        По всем вопросам обращайтесь по телефону +380661967660 - Алла.
     </p>
 
     @if($new->count())
