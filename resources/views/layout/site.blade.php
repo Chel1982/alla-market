@@ -47,7 +47,7 @@
             <!-- Этот блок расположен справа -->
             <ul class="navbar-nav ml-auto">
                 @auth
-                    @if (Auth::user()->id == 1 || Auth::user()->id == 2)
+                    @if (Auth::user()->admin == 1)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.index') }}">Админка</a>
                         </li>
