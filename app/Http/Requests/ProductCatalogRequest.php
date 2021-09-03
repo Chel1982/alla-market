@@ -42,11 +42,11 @@ class ProductCatalogRequest extends CatalogRequest {
                 'integer',
                 'min:1'
             ],
-            'brand_id' => [
-                'required',
-                'integer',
-                'min:1'
-            ],
+//            'brand_id' => [
+////                'required',
+//                'integer',
+//                'min:1'
+//            ],
             'price' => [
                 'required',
                 'numeric',
@@ -67,11 +67,11 @@ class ProductCatalogRequest extends CatalogRequest {
                 'integer',
                 'min:1'
             ],
-            'brand_id' => [
-                'required',
-                'integer',
-                'min:1'
-            ],
+//            'brand_id' => [
+////                'required',
+//                'integer',
+//                'min:1'
+//            ],
             'price' => [
                 'required',
                 'numeric',
