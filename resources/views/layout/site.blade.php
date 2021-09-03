@@ -60,20 +60,20 @@
                         @if ($positions) ({{ $positions }}) @endif
                     </a>
                 </li>
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.login') }}">Войти</a>
-                    </li>
-                    @if (Route::has('user.register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.register') }}">Регистрация</a>
-                        </li>
-                    @endif
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.index') }}">Личный кабинет</a>
-                    </li>
-                @endif
+{{--                @guest--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="{{ route('user.login') }}">Войти</a>--}}
+{{--                    </li>--}}
+{{--                    @if (Route::has('user.register'))--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="{{ route('user.register') }}">Регистрация</a>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
+{{--                @else--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="{{ route('user.index') }}">Личный кабинет</a>--}}
+{{--                    </li>--}}
+{{--                @endif--}}
             </ul>
         </div>
     </nav>
