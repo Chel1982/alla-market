@@ -46,6 +46,9 @@
     </div>
 </div>
 <div class="form-group">
+    <h4>
+        Категория
+    </h4>
     @php
         $category_id = old('category_id') ?? $product->category_id ?? 0;
     @endphp
@@ -57,6 +60,9 @@
     </select>
 </div>
 <div class="form-group">
+    <h4>
+        Бренд
+    </h4>
     @php
         $brand_id = old('brand_id') ?? $product->brand_id ?? 0;
     @endphp
