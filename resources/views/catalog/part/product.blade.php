@@ -23,6 +23,7 @@
             @endif
         </div>
         <div class="card-footer">
+            <p class="price">{{$product->price}} грн</p>
             <!-- Форма для добавления товара в корзину -->
             <form action="{{ route('basket.add', ['id' => $product->id]) }}"
                   method="post" class="d-inline add-to-basket">
