@@ -131,7 +131,7 @@ class ProductController extends Controller {
         $this->imageSaver->remove($product, 'product');
         $product->delete();
         return redirect()
-            ->route('admin.catalog.index')
+            ->route('admin.product.index')
             ->with('success', 'Товар каталога успешно удален');
     }
 }
