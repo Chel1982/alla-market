@@ -132,6 +132,6 @@ class ProductController extends Controller {
         $product->delete();
         return redirect()
             ->route('admin.product.index')
-            ->with('success', 'Товар каталога успешно удален');
+            ->with('success', 'Товар успешно удален');
     }
 }
