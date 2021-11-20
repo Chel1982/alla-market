@@ -1,11 +1,11 @@
 <div class="col-md-4 mb-4">
     <div class="card list-item">
-        @if(strlen($product->name) <= 35)
+        @if(iconv_strlen($product->name) <= 35)
             <div class="card-header">
                 <h3 class="mb-0">{{ $product->name }}</h3>
             </div>
         @endif
-        @if(strlen($product->name) > 35)
+        @if(iconv_strlen($product->name) > 35)
             <div class="card-header">
                 <h3 class="mb-0">{{ mb_substr($product->name, 0, 35) }}...</h3>
             </div>
