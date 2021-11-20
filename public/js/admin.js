@@ -27,9 +27,9 @@ jQuery(document).ready(function($) {
         for (var k in map) {
             text = text.replace(RegExp(k, 'g'), map[k]);
         }
-        text = text.replace(/[^- _a-zA-Z0-9]/g, '');
-        text = text.replace(/\s+/g, '-');
-        text = text.replace(/-+/g, '-');
+        text = text.replace(/[^- _a-zA-Z0-9]/g, '').toLowerCase();
+        text = text.replace(/\s+/g, '-').toLowerCase();
+        text = text.replace(/-+/g, '-').toLowerCase();
         $('input[name="slug"]').val(text);
     });
     /*
