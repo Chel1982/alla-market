@@ -6,7 +6,7 @@
         <div class="col-md-6">
             <p><strong>Название:</strong> {{ $product->name }}</p>
             <p><strong>ЧПУ (англ):</strong> {{ $product->slug }}</p>
-            <p><strong>Бренд:</strong> @isset($product->brand->name){{ $product->brand->name }} @else нет @endisset </p>
+            <p><strong>Бренд:</strong> {{ $product->brand->name }}</p>
             <p><strong>Категория:</strong> {{ $product->category->name }}</p>
             <p><strong>Новинка:</strong> @if($product->new) да @else нет @endif</p>
             <p><strong>Лидер продаж:</strong> @if($product->hit) да @else нет @endif</p>

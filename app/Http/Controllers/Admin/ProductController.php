@@ -65,8 +65,6 @@ class ProductController extends Controller {
         ]);
         $data = $request->all();
         $data['image'] = $this->imageSaver->upload($request, null, 'product');
-        $data['brand_id'] = $data['brand_id'] == 0 ? null : $data['brand_id'];
-
         $product = Product::create($data);
         return redirect()
             ->route('admin.product.show', ['product' => $product->id])
