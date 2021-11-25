@@ -18,7 +18,8 @@ class CatalogController extends Controller {
     public function category(Category $category, ProductFilter $filters) {
         $products = Product::categoryProducts($category->id)
             ->filterProducts($filters)
-            ->paginate(6)
+            ->orderBy('id', 'DESC')
+            ->paginate(24)
             ->withQueryString();
         return view('catalog.category', compact('category', 'products'));
     }
