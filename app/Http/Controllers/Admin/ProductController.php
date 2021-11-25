@@ -24,7 +24,7 @@ class ProductController extends Controller {
      */
     public function index() {
         $roots = Category::where('parent_id', 0)->get();
-        $products = Product::paginate(5);
+        $products = Product::orderBy('id', 'DESC')->paginate(15);
         return view('admin.product.index', compact('products', 'roots'));
     }
 
