@@ -16,13 +16,17 @@
     </a>
     <table class="table table-bordered">
         <tr>
+            <th width="5%">id</th>
             <th width="30%">Наименование</th>
-            <th width="65%">Описание</th>
+            <th width="60%">Описание</th>
             <th><i class="fas fa-edit"></i></th>
             <th><i class="fas fa-trash-alt"></i></th>
         </tr>
         @foreach ($products as $product)
         <tr>
+            <td>
+                {{ $product->id }}
+            </td>
             <td>
                 <a href="{{ route('admin.product.show', ['product' => $product->id]) }}">
                     {{ $product->name }}
