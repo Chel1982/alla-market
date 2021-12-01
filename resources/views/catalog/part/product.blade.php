@@ -24,7 +24,9 @@
             </div>
             @if ($product->image)
                 @php($url = url('storage/catalog/product/thumb/' . $product->image))
-                <img src="{{ $url }}" class="img-fluid" alt="">
+                <a href="{{ route('catalog.product', ['product' => $product->slug]) }}">
+                    <img src="{{ $url }}" class="img-fluid" alt="">
+                </a>
             @else
                 <img src="https://via.placeholder.com/300x150" class="img-fluid" alt="">
             @endif
@@ -35,10 +37,10 @@
             <form action="{{ route('basket.add', ['id' => $product->id]) }}"
                   method="post" class="d-inline add-to-basket">
                 @csrf
-                <button type="submit" class="btn btn-success">В корзину</button>
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-success btn-default">В корзину</button>
+                </div>
             </form>
-            <a href="{{ route('catalog.product', ['product' => $product->slug]) }}"
-               class="btn btn-dark float-right">Смотреть</a>
         </div>
     </div>
 </div>
