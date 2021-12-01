@@ -83,6 +83,8 @@
     <input type="file" class="form-control-file" name="image" accept="image/png, image/jpeg">
 </div>
 @isset($product->image)
+    @php($url = url('storage/catalog/product/thumb/' . $product->image))
+        <img src="{{ $url }}" class="img-fluid" alt="">
     <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" name="remove" id="remove">
         <label class="form-check-label" for="remove">
