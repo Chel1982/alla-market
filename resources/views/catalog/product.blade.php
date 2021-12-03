@@ -50,23 +50,21 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="row">
-                    <div class="col-md-6">
-                        @isset($product->category)
-                        Категория:
-                        <a href="{{ route('catalog.category', ['category' => $product->category->slug]) }}">
-                            {{ $product->category->name }}
-                        </a>
-                        @endisset
-                    </div>
-                    <div class="col-md-6 text-right">
-                        @isset($product->brand)
-                        Бренд:
-                        <a href="{{ route('catalog.brand', ['brand' => $product->brand->slug]) }}">
-                            {{ $product->brand->name }}
-                        </a>
-                        @endisset
-                    </div>
+                <div class="col-md-6">
+                    @isset($product->category)
+                    Категория:
+                    <a href="{{ route('catalog.category', ['category' => $product->category->slug]) }}">
+                        {{ $product->category->name }}
+                    </a>
+                    @endisset
+                </div>
+                <div class="col-md-6">
+                    @isset($product->brand)
+                    Бренд:
+                    <a href="{{ route('catalog.brand', ['brand' => $product->brand->slug]) }}">
+                        {{ $product->brand->name }}
+                    </a>
+                    @endisset
                 </div>
             </div>
         </div>
