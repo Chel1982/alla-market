@@ -22,8 +22,11 @@
                     <span class="badge badge-success ml-1">Распродажа</span>
                 @endif
             </div>
-            @if ($product->image)
-                @php($url = url('storage/catalog/product/thumb/' . $product->image))
+            @php
+                $image = $product->images()->first();
+            @endphp
+            @if ( isset($image) )
+                @php( $url = url('storage/catalog/product/' . $product->id . '/thumb/' . $image->name) )
                 <a href="{{ route('catalog.product', ['product' => $product->slug]) }}">
                     <img src="{{ $url }}" class="img-fluid" alt="">
                 </a>
