@@ -27,8 +27,7 @@
                         @if ( isset($images) )
                             <div id="carousel" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner row" role="listbox">
-                            @foreach( $images as $key => $image )
-
+                                    @foreach( $images as $key => $image )
                                         @if( $key == 0 )
                                             <div class="carousel-item active">
                                                 @php($url = url('storage/catalog/product/'. $product->id . '/image/' . $image->name))
@@ -40,7 +39,7 @@
                                                 <img src="{{ $url }}" alt="" class="img-fluid">
                                             </div>
                                         @endif
-                            @endforeach
+                                    @endforeach
                                 </div>
                                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
