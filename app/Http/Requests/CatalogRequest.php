@@ -54,7 +54,7 @@ abstract class CatalogRequest extends FormRequest {
                 'unique:'.$this->entity['table'].',slug',
                 'regex:~^[-_a-z0-9]+$~i',
             ],
-            'image' => [
+            'image.*' => [
                 'mimes:jpeg,jpg,png',
                 'max:5000'
             ],
@@ -80,7 +80,7 @@ abstract class CatalogRequest extends FormRequest {
                 'unique:'.$this->entity['table'].',slug,'.$model->id.',id',
                 'regex:~^[-_a-z0-9]+$~i',
             ],
-            'image' => [
+            'image.*' => [
                 'mimes:jpeg,jpg,png',
                 'max:5000'
             ],

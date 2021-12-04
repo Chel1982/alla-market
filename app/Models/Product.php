@@ -14,7 +14,6 @@ class Product extends Model {
         'name',
         'slug',
         'content',
-        'image',
         'price',
         'new',
         'hit',
@@ -48,6 +47,14 @@ class Product extends Model {
         return $this->belongsToMany(Basket::class)->withPivot('quantity');
     }
 
+    /**
+     * Связь «один к многим» таблицы `products` с таблицей `images`
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function images() {
+        return $this->hasMany(Image::class);
+    }
     /**
      * Позволяет выбирать товары категории и всех ее потомков
      *

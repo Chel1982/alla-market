@@ -80,18 +80,20 @@
               rows="4">{{ old('content') ?? $product->content ?? '' }}</textarea>
 </div>
 <div class="form-group">
-    <input type="file" class="form-control-file" name="image" accept="image/png, image/jpeg">
+    <input type="file" class="form-control-file" name="image[]" multiple accept="image/png, image/jpeg, image/jpg">
 </div>
-@isset($product->image)
-    @php($url = url('storage/catalog/product/thumb/' . $product->image))
-        <img src="{{ $url }}" class="img-fluid" alt="">
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" name="remove" id="remove">
-        <label class="form-check-label" for="remove">
-            Удалить загруженное изображение
-        </label>
-    </div>
-@endisset
+@if( isset($product) && count($product->images()->get()) > 0)
+    @foreach( $product->images()->get() as $image )
+        @php($url = url('storage/catalog/product/' . $image->product_id . '/thumb/' . $image->name))
+            <img src="{{ $url }}" class="img-fluid" alt="">
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" value={{$image->id}} name="remove[]">
+            <label class="form-check-label" for="remove">
+                Удалить загруженное изображение
+            </label>
+        </div>
+    @endforeach
+@endif
 <div class="form-group">
     <button type="submit" class="btn btn-primary">Сохранить</button>
 </div>

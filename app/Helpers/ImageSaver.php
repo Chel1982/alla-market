@@ -13,18 +13,25 @@ class ImageSaver {
      * @param \Illuminate\Http\Request $request — объект HTTP-запроса
      * @param \App\Models\Item $item — модель категории, бренда или товара
      * @param string $dir — директория, куда будем сохранять изображение
+     * @param boolean $product — определяет работаем ли мы с продуктом
      * @return string|null — имя файла изображения для сохранения в БД
      */
-    public function upload($request, $item, $dir) {
+    public function upload($request, $item, $dir, $product = false) {
         $name = $item->image ?? null;
         if ($item && $request->remove) { // если надо удалить изображение
             $this->remove($item, $dir);
             $name = null;
         }
-        $source = $request->file('image');
+
+        if ($product){
+            $source = $request;
+        } else {
+            $source = $request->file('image');
+        }
+
         if ($source) { // если было загружено изображение
             // перед загрузкой нового изображения удаляем старое
-            if ($item && $item->image) {
+            if ($item && $item->image && !$product) {
                 $this->remove($item, $dir);
             }
             $ext = $source->extension();

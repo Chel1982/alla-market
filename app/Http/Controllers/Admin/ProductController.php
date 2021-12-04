@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCatalogRequest;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller {
 
@@ -64,8 +66,21 @@ class ProductController extends Controller {
             'sale' => $request->has('sale'),
         ]);
         $data = $request->all();
-        $data['image'] = $this->imageSaver->upload($request, null, 'product');
+
         $product = Product::create($data);
+
+        if ( isset($data['image']) ) {
+            foreach ( $data['image'] as $image ){
+                $name = $this->imageSaver->upload($image, null, 'product/' . $product->id, true);
+
+                $image = new Image();
+                $image->name = $name;
+                $image->main_image = 0;
+                $image->product_id = $product->id;
+                $image->save();
+            }
+        }
+
         return redirect()
             ->route('admin.product.show', ['product' => $product->id])
             ->with('success', 'Новый товар успешно создан');
@@ -108,8 +123,29 @@ class ProductController extends Controller {
             'hit' => $request->has('hit'),
             'sale' => $request->has('sale'),
         ]);
+
         $data = $request->all();
-        $data['image'] = $this->imageSaver->upload($request, $product, 'product');
+
+        if ( isset($data['remove']) ) {
+            foreach ($data['remove'] as $idImage) {
+                $image = Image::find($idImage);
+                Storage::disk('public')->delete('catalog/product/' . $product->id . '/image/' . $image->first()->name );
+                Storage::disk('public')->delete('catalog/product/' . $product->id . '/source/' . $image->first()->name );
+                Storage::disk('public')->delete('catalog/product/' . $product->id . '/thumb/' . $image->first()->name );
+                $image->delete();
+            }
+        }
+
+        if ( isset($data['image']) ) {
+            foreach ( $data['image'] as $image ){
+                $name = $this->imageSaver->upload($image, null, 'product/' . $product->id, true);
+                $image = new Image();
+                $image->name = $name;
+                $image->main_image = 0;
+                $image->product_id = $product->id;
+                $image->save();
+            }
+        }
 
         $data['brand_id'] = $data['brand_id'] == 0 ? null : $data['brand_id'];
 
@@ -126,7 +162,7 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product) {
-        $this->imageSaver->remove($product, 'product');
+        Storage::disk('public')->deleteDirectory('catalog/product/' . $product->id );
         $product->delete();
         return redirect()
             ->route('admin.product.index')
