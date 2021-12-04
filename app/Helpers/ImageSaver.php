@@ -41,10 +41,10 @@ class ImageSaver {
             $name = basename($path); // имя файла
             // создаем уменьшенное изображение 600x300px, качество 100%
             $dst = 'catalog/'.$dir.'/image/';
-            $this->resize($path, $dst, 600, 300, $ext);
+            $this->resize($path, $dst, 600, 400, $ext);
             // создаем уменьшенное изображение 300x150px, качество 100%
             $dst = 'catalog/'.$dir.'/thumb/';
-            $this->resize($path, $dst, 300, 150, $ext);
+            $this->resize($path, $dst, 300, 200, $ext);
         }
         return $name;
     }
