@@ -80,7 +80,7 @@
               rows="4">{{ old('content') ?? $product->content ?? '' }}</textarea>
 </div>
 <div class="form-group">
-    <input type="file" class="form-control-file" name="image[]" multiple accept="image/png, image/jpeg, image/jpg">
+    <input type="file" class="form-control-file" name="images[]" multiple accept="image/png, image/jpeg, image/jpg">
 </div>
 @if( isset($product) && count($product->images()->get()) > 0)
     @foreach( $product->images()->get() as $image )

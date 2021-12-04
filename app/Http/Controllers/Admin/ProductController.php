@@ -69,15 +69,11 @@ class ProductController extends Controller {
 
         $product = Product::create($data);
 
-        if ( isset($data['image']) ) {
-            foreach ( $data['image'] as $image ){
+        if ( isset($data['images']) ) {
+            foreach ( $data['images'] as $image ){
                 $name = $this->imageSaver->upload($image, null, 'product/' . $product->id, true);
-
                 $image = new Image();
-                $image->name = $name;
-                $image->main_image = 0;
-                $image->product_id = $product->id;
-                $image->save();
+                $image::create(['name' => $name, 'main_image' => 0, 'product_id' => $product->id]);
             }
         }
 
@@ -136,14 +132,11 @@ class ProductController extends Controller {
             }
         }
 
-        if ( isset($data['image']) ) {
-            foreach ( $data['image'] as $image ){
+        if ( isset($data['images']) ) {
+            foreach ( $data['images'] as $image ){
                 $name = $this->imageSaver->upload($image, null, 'product/' . $product->id, true);
                 $image = new Image();
-                $image->name = $name;
-                $image->main_image = 0;
-                $image->product_id = $product->id;
-                $image->save();
+                $image::create(['name' => $name, 'main_image' => 0, 'product_id' => $product->id]);
             }
         }
 
